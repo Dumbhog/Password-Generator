@@ -40,9 +40,9 @@ Exit: Any other key
 """)
 
 while True:
-    decision = input("Type 'S' or 'M': ")
+    decision = input("Type 's' or 'm': ")
     
-    if decision == "S":
+    if decision == "s":
         while True:
             inpt = input("Press Enter to generate a password: ")
             if inpt == "":
@@ -50,18 +50,24 @@ while True:
             elif inpt == "b":
                 break
             else:
+                print("Invalid input. Exiting the program.")
                 exit()
 
-    elif decision == "M":
+    elif decision == "m":
         while True:
-            inpt = int(input("How many passwords would you like to generate? "))
+            inpt = input("How many passwords would you like to generate? ")
+            try:
+                inpt = int(inpt)
+            except ValueError:
+                print("Please enter a valid number.")
+                break
+
             if 1 < inpt < 1000:
                     for i in range(inpt):
                         generate_password()
             elif inpt > 1000:
-                print("Please enter a number between 1 and 1000.")
-            elif inpt != int:
-                print("Please enter a valid number.")
+                print("Please enter a number between 1 and 1000.")    
+
             inpt = input("What would you like to do next? ")
             if inpt == "":
                 continue
