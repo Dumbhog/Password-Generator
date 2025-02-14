@@ -1,35 +1,30 @@
 # Description: This program generates a random password based on user input.
 from random import randint
 
-animals = ["cat", "dog", "fox", "wolf", "bear", "lion", "tiger", "shark", "whale", "horse"
-"deer", "moose", "goat", "sheep", "cow", "pig", "bat", "rat", "mouse", "hare",
-"elk", "lynx", "mole", "vole", "frog", "toad", "newt", "salamander", "crab", "lobster",
-"shrimp", "clam", "oyster", "squid", "octopus", "jellyfish", "starfish", "urchin", "coral", "anemone",
-"eagle", "hawk", "falcon", "owl", "sparrow", "robin", "finch", "wren", "lark", "dove",
-"pigeon", "crow", "raven", "magpie", "jay", "swallow", "swift", "gull", "tern", "albatross",
-"penguin", "seal", "walrus", "otter", "beaver", "platypus", "echidna", "kangaroo", "koala", "wombat",
-"possum", "lemur", "monkey", "ape", "gorilla", "chimpanzee", "orangutan", "baboon", "gibbon", "sloth",
-"anteater", "armadillo", "pangolin", "aardvark", "hyena", "jackal", "coyote", "dingo", "ferret", "weasel",
-"mink", "stoat", "ermine", "badger", "skunk", "raccoon", "opossum", "porcupine", "hedgehog", "shrew" ]
+animals_3word = ["cat", "dog", "fox", "bat", "rat", "elk"]
+animals_4word = ["wolf", "bear", "lion", "shark", "whale", "hare", "mole", "vole", "frog", "toad"]
+animals_5word = ["tiger", "horse", "sheep", "mouse", "crab", "shrimp", "clam", "squid", "coral", "eagle"]
+animals_6word = ["deer", "moose", "goat", "cow", "pig", "newt", "shark", "whale", "otter", "beaver"]
+animals_7word = ["lobster", "oyster", "octopus", "starfish", "urchin", "anemone", "falcon", "sparrow", "robin", "finch"]
+animals_8word = ["platypus", "echidna", "kangaroo", "koala", "wombat", "possum", "lemur", "monkey", "gorilla", "chimpanzee"]
+animals_9word = ["orangutan", "baboon", "gibbon", "anteater", "armadillo", "pangolin", "aardvark", "hyena", "jackal", "coyote"]
+animals_10word = ["chimpanzee", "orangutan", "chimpanzee", "orangutan", "chimpanzee", "orangutan", "chimpanzee", "orangutan", "chimpanzee", "orangutan"]
 
-adjectives = ["happy", "sad", "angry", "mad", "glad", "silly", "funny", "serious", "crazy", "wild", 
-"calm", "brave", "shy", "bold", "lazy", "active", "quiet", "loud", "gentle", "rough",
-"kind", "mean", "friendly", "unfriendly", "polite", "rude", "smart", "dumb", "clever", "foolish",
-"strong", "weak", "fast", "slow", "big", "small", "tiny", "huge", "short", "tall",
-"thin", "fat", "chubby", "skinny", "beautiful", "ugly", "handsome", "pretty", "plain", "fancy",
-"rich", "poor", "young", "old", "new", "ancient", "modern", "classic", "trendy", "outdated",
-"clean", "dirty", "neat", "messy", "tidy", "sloppy", "organized", "disorganized", "happy-go-lucky", "moody",
-"cheerful", "gloomy", "optimistic", "pessimistic", "hopeful", "hopeless", "confident", "insecure", "fearless", "fearful",
-"adventurous", "cautious", "curious", "indifferent", "energetic", "lethargic", "enthusiastic", "apathetic", "creative", "unimaginative" ]
+adjectives = ["happy", "angry", "crazy", "brave", "quiet", "loud", "rough", "smart", "dumb", "clever",
+"foolish", "strong", "quick", "small", "short", "chubby", "plain", "fancy", "young", "clean",
+"dirty", "neat", "tidy", "moody", "gloomy"]
 
 symbols = ["!", "@", "#", "$", "%", "^", "&", "*", "_", "+", "-", "=", ":", ";", "'", "<", ">", ",", ".", "?", "~" ]
 
 def generate_password():
-    animal = animals[randint(0, len(animals) - 1)]
+    animal3 = animals_3word[randint(0, len(animals_3word) - 1)]
+    animal4 = animals_4word[randint(0, len(animals_4word) - 1)]
+    animal5 = animals_5word[randint(0, len(animals_5word) - 1)]
+
     adjective = adjectives[randint(0, len(adjectives) - 1)]
     symbol = symbols[randint(0, len(symbols) - 1)]
     number = randint(0, 99)
-    password = f"{adjective.title()}{symbol.title()}{animal.title()}{number}"
+
     print(f"Your password is: {password}")
 
 print("""Welcome to the Password Generator! Would you like to generate a single password or many?"
@@ -40,9 +35,18 @@ Exit: Any other key
 """)
 
 while True:
-    decision = input("Type 's' or 'm': ")
+    decision1 = input("How long would you like your passwords to be?")
+    try:
+        decision1 = int(decision1)
+    except ValueError:
+        print("Please enter a valid number")
+    break
+    if decision1 < 12:
+        print("")
+
+    decision2 = input("Type 's' or 'm': ")
     
-    if decision == "s":
+    if decision2 == "s":
         while True:
             inpt = input("Press Enter to generate a password: ")
             if inpt == "":
@@ -53,9 +57,9 @@ while True:
                 print("Invalid input. Exiting the program.")
                 exit()
 
-    elif decision == "m":
+    elif decision2 == "m":
         while True:
-            inpt = input("How many passwords would you like to generate? ")
+            inpt = input("How many passwords would you like to generate?")
             try:
                 inpt = int(inpt)
             except ValueError:
