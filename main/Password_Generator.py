@@ -1,77 +1,144 @@
 # Description: This program generates a random password based on user input.
 from random import randint
 
-animals = ["cat", "dog", "fox", "wolf", "bear", "lion", "tiger", "shark", "whale", "horse"
-"deer", "moose", "goat", "sheep", "cow", "pig", "bat", "rat", "mouse", "hare",
-"elk", "lynx", "mole", "vole", "frog", "toad", "newt", "salamander", "crab", "lobster",
-"shrimp", "clam", "oyster", "squid", "octopus", "jellyfish", "starfish", "urchin", "coral", "anemone",
-"eagle", "hawk", "falcon", "owl", "sparrow", "robin", "finch", "wren", "lark", "dove",
-"pigeon", "crow", "raven", "magpie", "jay", "swallow", "swift", "gull", "tern", "albatross",
-"penguin", "seal", "walrus", "otter", "beaver", "platypus", "echidna", "kangaroo", "koala", "wombat",
-"possum", "lemur", "monkey", "ape", "gorilla", "chimpanzee", "orangutan", "baboon", "gibbon", "sloth",
-"anteater", "armadillo", "pangolin", "aardvark", "hyena", "jackal", "coyote", "dingo", "ferret", "weasel",
-"mink", "stoat", "ermine", "badger", "skunk", "raccoon", "opossum", "porcupine", "hedgehog", "shrew" ]
+animals_3letter = ["fox", "bat", "rat", "elk", "cow", "pig", "hen", "emu"]
+animals_4letter = ["wolf", "bear", "lion", "hare", "mole","frog", "toad"]
+animals_5letter = ["tiger", "horse", "sheep", "crane", "coral", "eagle, otter"]
+animals_6letter = ["beaver", "donkey", "monkey", "gibbon", "baboon", "lemur", "oyster", "falcon",]
+animals_7letter = ["lobster", "oyster", "octopus", "urchin", "sparrow", "penguin"]
+animals_8letter = ["platypus", "kangaroo", "elephant", "antelope", "chipmunk", "dormouse"]
+animals_9letter = ["orangutan", "pangolin", "aardvark", "armadillo", "porcupine"]
+animals_10letter = ["bloodhound", "wildebeest", "woodpecker", "chimpanzee", "chinchilla"]
 
-adjectives = ["happy", "sad", "angry", "mad", "glad", "silly", "funny", "serious", "crazy", "wild", 
-"calm", "brave", "shy", "bold", "lazy", "active", "quiet", "loud", "gentle", "rough",
-"kind", "mean", "friendly", "unfriendly", "polite", "rude", "smart", "dumb", "clever", "foolish",
-"strong", "weak", "fast", "slow", "big", "small", "tiny", "huge", "short", "tall",
-"thin", "fat", "chubby", "skinny", "beautiful", "ugly", "handsome", "pretty", "plain", "fancy",
-"rich", "poor", "young", "old", "new", "ancient", "modern", "classic", "trendy", "outdated",
-"clean", "dirty", "neat", "messy", "tidy", "sloppy", "organized", "disorganized", "happy-go-lucky", "moody",
-"cheerful", "gloomy", "optimistic", "pessimistic", "hopeful", "hopeless", "confident", "insecure", "fearless", "fearful",
-"adventurous", "cautious", "curious", "indifferent", "energetic", "lethargic", "enthusiastic", "apathetic", "creative", "unimaginative" ]
+adjectives = ["happy", "angry", "crazy", "brave", "quiet", "rough", "smart", "quick", "small", "short", "chubby", "plain", "fancy", "young", "clean",
+"dirty", "moody", "gloomy", "agape", "alone", "alien", "alive", "alert", "amuck", "awake", "aware", "awful", "axial", "basic", "batty", "beady", "beamy",]
 
-symbols = ["!", "@", "#", "$", "%", "^", "&", "*", "_", "+", "-", "=", ":", ";", "'", "<", ">", ",", ".", "?", "~" ]
+symbols = ["!", "@", "#", "$", "%", "^", "&", "*", "_", "+", "-", "=", ":", ";", "'", "<", ">", ".", "?", "~" ]
+
+animal_dict = {
+    10: "",
+    11: "",
+    12: "",
+    13: "",
+    14: "",
+    15: "",
+    16: "",
+    17: ""
+}
+
+animal3 = 0
+animal4 = 0
+animal5 = 0
+animal6 = 0
+animal7 = 0
+animal8 = 0
+animal9 = 0
+animal10 = 0
 
 def generate_password():
-    animal = animals[randint(0, len(animals) - 1)]
+
+    global adjective
+    global symbol
+    global number 
+    global animal1
+    global animal2
+    global animal3
+    global animal4
+    global animal5
+    global animal6
+    global animal7
+    global animal8
+    global animal9
+    global animal10
+    global animal_dict
+    
+    animal4 = animals_4letter[randint(0, len(animals_4letter) - 1)]
+    animal5 = animals_5letter[randint(0, len(animals_5letter) - 1)]
+    animal6 = animals_6letter[randint(0, len(animals_6letter) - 1)]
+    animal7 = animals_7letter[randint(0, len(animals_7letter) - 1)]
+    animal8 = animals_8letter[randint(0, len(animals_8letter) - 1)]
+    animal9 = animals_9letter[randint(0, len(animals_9letter) - 1)]
+    animal10 = animals_10letter[randint(0, len(animals_10letter) - 1)] 
+
     adjective = adjectives[randint(0, len(adjectives) - 1)]
     symbol = symbols[randint(0, len(symbols) - 1)]
-    number = randint(0, 99)
-    password = f"{adjective.title()}{symbol.title()}{animal.title()}{number}"
+    number = randint(10, 99)
+
+    animal_dict = {
+    10: animal3,
+    11: animal4,
+    12: animal5,
+    13: animal6,
+    14: animal7,
+    15: animal8,
+    16: animal9,
+    17: animal10
+    }
+
+    password = f"{adjective}{symbol}{animal_dict[decision1]}{number}"
     print(f"Your password is: {password}")
 
-print("""Welcome to the Password Generator! Would you like to generate a single password or many?"
+    password = 0
+    adjective = 0
+    symbol = 0
+    number = 0
+ 
+print("""Welcome to the Password Generator! You can generate a single password or many!"
 Controls:
 Generate password: 'Enter'
 Back: 'b'
-Exit: Any other key
+Exit: 'e' (or often any other key)
 """)
 
-while True:
-    decision = input("Type 's' or 'm': ")
-    
-    if decision == "s":
-        while True:
-            inpt = input("Press Enter to generate a password: ")
-            if inpt == "":
-                generate_password()
-            elif inpt == "b":
-                break
-            else:
-                print("Invalid input. Exiting the program.")
-                exit()
 
-    elif decision == "m":
-        while True:
-            inpt = input("How many passwords would you like to generate? ")
+while True:
+    
+    while True:
+
+        decision1 = input("How long should your passwords be? (10-17): ")
+        try:
+            decision1 = int(decision1)
+        except ValueError:
+            if decision1 == "b":
+                break
+            elif decision1 == "e":
+                exit()
+            else:
+                print("Please enter a valid number")
+                break
+
+        if decision1 not in animal_dict:
+            print("Please enter a number between 10 and 17.")
+            break
+
+        decision2 = input("Type 's' or 'm': ")
+        
+        if decision2 == "s": 
+            generate_password()
+            break
+
+        elif decision2 == "m":
+            inpt = input("How many passwords would you like to generate?: ")
             try:
                 inpt = int(inpt)
             except ValueError:
                 print("Please enter a valid number.")
                 break
-
             if 1 < inpt < 1000:
                     for i in range(inpt):
                         generate_password()
             elif inpt > 1000:
-                print("Please enter a number between 1 and 1000.")    
+                print("Please enter a number between 1 and 1000.")
+                break    
 
-            inpt = input("What would you like to do next? ")
+            inpt = input("Type 's' or 'm': ")
             if inpt == "":
                 continue
             elif inpt == "b":
                 break
+            elif inpt == "s" or "m":
+                decision2 = inpt
             else:
                 exit()
+        else: 
+            exit()
