@@ -16,14 +16,14 @@ adjectives = ["happy", "angry", "crazy", "brave", "quiet", "rough", "smart", "qu
 symbols = ["!", "@", "#", "$", "%", "^", "&", "*", "_", "+", "-", "=", ":", ";", "'", "<", ">", ".", "?", "~" ]
 
 animal_dict = {
-    5: "",
-    6: "",
-    7: "",
-    8: "",
-    9: "",
     10: "",
     11: "",
-    12: ""
+    12: "",
+    13: "",
+    14: "",
+    15: "",
+    16: "",
+    17: ""
 }
 
 animal3 = 0
@@ -65,14 +65,14 @@ def generate_password():
     number = randint(10, 99)
 
     animal_dict = {
-    5: animal3,
-    6: animal4,
-    7: animal5,
-    8: animal6,
-    9: animal7,
-    10: animal8,
-    11: animal9,
-    12: animal10
+    10: animal3,
+    11: animal4,
+    12: animal5,
+    13: animal6,
+    14: animal7,
+    15: animal8,
+    16: animal9,
+    17: animal10
     }
 
     password = f"{adjective}{symbol}{animal_dict[decision1]}{number}"
@@ -83,30 +83,33 @@ def generate_password():
     symbol = 0
     number = 0
  
-print("""Welcome to the Password Generator! Would you like to generate a single password or many?"
+print("""Welcome to the Password Generator! You can generate a single password or many!"
 Controls:
 Generate password: 'Enter'
 Back: 'b'
-Exit: Any other key
+Exit: 'e' (or often any other key)
 """)
 
 
 while True:
-    decision1 = input("How should your passwords to be? (5-12): ")
-    try:
-        decision1 = int(decision1)
-    except ValueError:
-        if decision1 == "b":
-            break
-        else:
-            print("Please enter a valid number")
-            break
-
-    if decision1 not in animal_dict:
-        print("Please enter a number between 5 and 12.")
-        break
-
+    
     while True:
+
+        decision1 = input("How long should your passwords be? (10-17): ")
+        try:
+            decision1 = int(decision1)
+        except ValueError:
+            if decision1 == "b":
+                break
+            elif decision1 == "e":
+                exit()
+            else:
+                print("Please enter a valid number")
+                break
+
+        if decision1 not in animal_dict:
+            print("Please enter a number between 10 and 17.")
+            break
 
         decision2 = input("Type 's' or 'm': ")
         
@@ -115,13 +118,12 @@ while True:
             break
 
         elif decision2 == "m":
-            inpt = input("How many passwords would you like to generate?")
+            inpt = input("How many passwords would you like to generate?: ")
             try:
                 inpt = int(inpt)
             except ValueError:
                 print("Please enter a valid number.")
                 break
-
             if 1 < inpt < 1000:
                     for i in range(inpt):
                         generate_password()
@@ -129,7 +131,7 @@ while True:
                 print("Please enter a number between 1 and 1000.")
                 break    
 
-            inpt = input("What would you like to do next? ")
+            inpt = input("Type 's' or 'm': ")
             if inpt == "":
                 continue
             elif inpt == "b":
